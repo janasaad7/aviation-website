@@ -1,0 +1,269 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+.dropdown-arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-bottom: 3px;
+    vertical-align: middle;
+}
+.up {
+    transform: rotate(-135deg);
+}
+.down {
+    transform: rotate(45deg);
+}
+
+  
+.homepage{
+    background: url("images/header7.jpg") no-repeat;
+    background-size: 100%;
+    backdrop-filter: blur(70%);
+    &__header{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        height: fit-content;
+        background-color: rgba(0, 5, 54, 0.6);
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        &__slogan{
+            padding: 3%;
+            color:rgb(235, 140, 17);
+            font-size: 2rem;
+            backdrop-filter: blur(70%);
+        }
+        &__pages{
+            color:rgb(235, 140, 17);
+            display: flex;
+            justify-content: space-between;
+            padding: 3%;
+            gap:1rem;
+            &__buttons{
+                &:hover{
+                    opacity: 0.6;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    &__body{
+        margin: 2%;
+        display: flex;
+        justify-content: space-between;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        &__options{
+            padding: 2%;
+            background-color: rgba(207, 211, 197,0.7);
+            color:#000536;
+            &:hover{
+                cursor: pointer;
+                opacity: 0.8;
+            }
+        }
+    }
+}
+
+.flights{
+    background-color: rgb(235, 233, 233);
+    &__header{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        height: fit-content;
+        background-color: rgba(0, 85, 154, 1);
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        position: sticky;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 999;
+        &__slogan{
+            padding: 2%;
+            color:rgb(235, 140, 17);
+            font-size: 2rem;
+            backdrop-filter: blur(70%);
+        }
+        &__pages{
+            color:rgb(235, 140, 17);
+            display: flex;
+            justify-content: space-between;
+            padding: 2%;
+            gap:1rem;
+            &__buttons{
+                &:hover{
+                    opacity: 0.6;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    &__bar{
+        display: flex;
+        justify-content: flex-start;
+        background-color: rgb(235, 140, 17);
+        &__logo{
+            margin-left: 4%;
+            width:15%;
+        }
+        &__search{
+            background-color: white;
+            box-shadow: 2px 2px 2px  hsla(180, 32%, 53%, 0.4);    
+            outline: 0px;
+            padding: 30px;
+            width: 100%;
+            border-radius: 20px;
+            align-self: center;
+            margin-right: 5%;
+            font-size: 20px;
+        }
+    }
+    &__container{
+        display: flex;
+        margin-top: 5%;
+    }
+    &__filter{
+        margin-left: 5%;
+        margin-top: 0;
+        padding: 2%;
+        background-color: white;
+        border-radius: 10px;
+        width:25%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        &__header{
+            font-weight: 700;
+            font-size: 25px;
+            margin-bottom: 15%;
+            font-family: "DIN Next", sans-serif;
+        }
+        &__titles{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 600;
+        }
+        &__options-list{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            margin-bottom: 5%;
+            &__options{
+                margin-left: 5%;
+                display: flex;
+                gap: 7px;
+                &__checkbox{
+
+                }
+                &__labels{
+                    
+                }
+            }
+        }
+    }
+    &__list{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 5%;
+        margin-top: 0;
+        width: 100%;
+        &__flight{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: #D5F3FE;
+            border-radius: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            box-shadow: 2px 2px 6px hsla(180, 32%, 53%, 0.4);
+            &__date{
+                display: none;
+            }
+            &__header{
+                display: flex;
+                justify-content: space-between;
+                background-color: #2565AE;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                padding: 1%;
+                color:beige;
+                font-weight: bold;
+                &__number{
+                    padding:5px;
+                }
+                &__status{
+                    padding:5px 10px;
+                    border-radius: 20px;
+                    &--scheduled{
+                        background-color: rgb(213, 213, 12);
+                    }
+                    &--active{
+                        background-color: rgb(12, 156, 12);
+                    }
+                    &--landed{
+                        background-color: blue;
+                    }
+                    &--cancelled{
+                        background-color: red;
+                    }
+                    &--diverted{
+                        background-color:coral;
+                    }
+                    &--unknown{
+                        background-color: black;
+                    }
+                }
+            }
+            &__body{
+                display: grid;
+                grid-template-columns: 20% 1fr 1fr 1fr;
+                color: #000536;
+                text-align: center;
+                padding: 1%;
+                &__airline-logo{
+                    width: 100px;
+                }
+                &__arrow{
+                    // width: 2px;
+                    // height: 2px;
+                }
+                &__departure{
+                    display: flex;
+                    flex-direction: column;
+                    &__scheduled{
+                        font-weight: 700;
+                        font-size: 1.5rem;
+                    }
+                    &__iata{
+                        font-size: 1.2rem;
+                    }
+                    &__timezone{
+                        font-size: 1.2rem;
+                    }
+                }
+                &__arrival{
+                    display: flex;
+                    flex-direction: column;
+                    &__scheduled{
+                        font-weight: 700;
+                        font-size: 1.5rem;
+                    }
+                    &__iata{
+                        font-size: 1.2rem;
+                    }
+                    &__timezone{
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.airports{
+
+}
