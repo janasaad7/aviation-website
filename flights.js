@@ -2,14 +2,13 @@ import { navigationBar } from './main.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     navigationBar()
-    const accessKey = '021f3bf7e84211994b2797d1a56980df'
+    const accessKey = 'e2cc03395d0d309abf0946b23661fe70'
     const url = `https://api.aviationstack.com/v1/flights?access_key=${accessKey}`
 
     fetch(url)
         .then((response) => response.json())
         .then((data) => {
             const result = data.data
-            console.log(result)
             const flightsList = document.querySelector(".flights__list")
             const template = document.querySelector("#flight-temp").content
             const airlines = []
@@ -74,24 +73,46 @@ document.addEventListener("DOMContentLoaded", () => {
                         case("FlexFlight"): airlineLogo.src = "images/flexflight.png"; break;
                         case("Myanmar Airways International"): airlineLogo.src = "images/myanmar.png"; break;
                         case("Firefly"): airlineLogo.src = "images/firefly.png"; break;
-                    //     case("KLM"): airlineLogo.src = ""; break;
-                    //     case("LATAM Airlines"): airlineLogo.src = ""; break;
-                    //     case("Qantas"): airlineLogo.src = ""; break;
-                    //     case("Qatar Airways"): airlineLogo.src = ""; break;
+                        case("KLM"): airlineLogo.src = "images/klm.png"; break;
+                        case("LATAM Airlines"): airlineLogo.src = "images/latam.png"; break;
+                        case("Qantas"): airlineLogo.src = "images/qantas.png"; break;
+                        case("Qatar Airways"): airlineLogo.src = "images/qatar.png"; break;
                         case("Turkish Airlines"): airlineLogo.src = "images/turkish.png"; break;
                         case("SriLankan Airlines"): airlineLogo.src = "images/srilankan.jpg"; break;
                         case("Oman Air"): airlineLogo.src = "images/oman.png"; break;
-                    //     case("Virgin Australia"): airlineLogo.src = ""; break;
-                    //     case("United Airlines"): airlineLogo.src = ""; break;
-                    //     case("SAS"): airlineLogo.src = ""; break;
-                    //     case("Air New Zealand"): airlineLogo.src = ""; break;
-                    //     case("SWISS"): airlineLogo.src = ""; break;
-                    //     case("Air India"): airlineLogo.src = ""; break;
-                    //     case("Air Canada"): airlineLogo.src = ""; break;
-                    //     case("Batik Air"): airlineLogo.src = ""; break;
-                    //     case("China Eastern Airlines"): airlineLogo.src = ""; break;
-                    //     case("Xiamen Airlines"): airlineLogo.src = ""; break;
+                        case("China Eastern Airlines"): airlineLogo.src = "images/chinaeast.png"; break;
+                        case("China Southern Airlines"): airlineLogo.src = "images/chinasouth.png"; break;
+                        case("Xiamen Airlines"): airlineLogo.src = "images/xiamen.png"; break;
                         case("Jet Linx Aviation"): airlineLogo.src = "images/jetlinx.png"; break;
+                        case("Air New Zealand"): airlineLogo.src = "images/newzealand.png"; break;
+                        case("Aero K"): airlineLogo.src = "images/aerok.png"; break;
+                        case("American Airlines"): airlineLogo.src = "images/american.png"; break;
+                        case("Loong Air"): airlineLogo.src = "images/loong.png"; break;
+                        case("Virgin Australia"): airlineLogo.src = "images/virginaust.png"; break;
+                        case("United Airlines"): airlineLogo.src = "images/united.png"; break;
+                        case("SAS"): airlineLogo.src = "images/sas.png"; break;
+                        case("SWISS"): airlineLogo.src = "images/swiss.png"; break;
+                        case("Air India"): airlineLogo.src = "images/india.png"; break;
+                        case("Air Canada"): airlineLogo.src = "images/canada.png"; break;
+                        case("Batik Air"): airlineLogo.src = "images/batik.png"; break;
+                        case("Guangxi Beibu Gulf Airlines"): airlineLogo.src = "images/guangxi.png"; break;
+                        case("Yeti Airlines"): airlineLogo.src = "images/yeti.png"; break;
+                        case("China Express Air"): airlineLogo.src = "images/chinaexpress.png"; break;
+                        case("Air China LTD"): airlineLogo.src = "images/chinaltd.png"; break;
+                        case("IndiGo"): airlineLogo.src = "images/indigo.png"; break;
+                        case("Sichuan Airlines"): airlineLogo.src = "images/sichuan.png"; break;
+                        case("Freebird Airlines"): airlineLogo.src = "images/freebird.png"; break;
+                        case("Aeroflot"): airlineLogo.src = "images/aeroflot.png"; break;
+                        case("JAL"): airlineLogo.src = "images/jal.png"; break;
+                        case("AJet"): airlineLogo.src = "images/ajet.png"; break;
+                        case("Solaseed Air"): airlineLogo.src = "images/solaseed.png"; break;
+                        case("Juneyao Airlines"): airlineLogo.src = "images/juneyao.png"; break;
+                        case("Shenzhen Airlines"): airlineLogo.src = "images/shenzhen.png"; break;
+                        case("Skymark Airlines"): airlineLogo.src = "images/skymark.png"; break;
+                        case("Tibet Airlines"): airlineLogo.src = "images/tibet.png"; break;
+                        case("Smartavia"): airlineLogo.src = "images/smartavia.png"; break;
+                        case("Jazeera Airways"): airlineLogo.src = "images/jazeera.png"; break;
+
                         default: airlineLogo.src = "images/airplane.png"; break;
                     }
                 }
@@ -176,20 +197,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => {console.error('error fetching data:', error)});
 })
 
-function toggleDropDown(dropdown){
-    if (dropdown.style.display === "block") {
-        dropdown.style.display = "none";
-    } else {
-        dropdown.style.display = "block";
-    }
-}
-
-const filterDate = document.querySelector("#flights__filter__date")
-const filterAirline = document.querySelector("#flights__filter__airline")
-const filterStatus = document.querySelector("#flights__filter__status")
-const filterTakeoff = document.querySelector("#flights__filter__takeoff")
-const filterTouchdown = document.querySelector("#flights__filter__touchdown")
-
 function search(flights, searchInputValue){
     const searchValue = searchInputValue.toLowerCase().trim()
     flights.forEach((flight) => {
@@ -205,78 +212,96 @@ function search(flights, searchInputValue){
     })
 }
 
-function filterByDate(flights, date){
-    flights.forEach((flight) => {
-        const flightDate = flight.querySelector(".flights__list__flight__date").innerText
-        if (flightDate === date) {
-            flight.style.display = "flex"
-        } 
-        else {
-            flight.style.display = "none" 
-        }
-    });
+function toggleDropDown(options, title){
+    if (options.style.display === "block") {
+        options.style.display = "none";
+        title.style.marginBottom = "10%";
+    } else {
+        options.style.display = "block";
+    }
 }
 
-function filterByAirline(flights, airline){
-    flights.forEach((flight) => {
-        const flightAirline = flight.querySelector(".flights__list__flight__body__airline-logo").alt.toLowerCase()
-        if (flightAirline === airline.toLowerCase()) {
-            flight.style.display = "flex"; 
-        } 
-        else {
-            flight.style.display = "none"; 
-        }
-    });
+function toggleArrow(arrow){
+    if(arrow.classList.contains("down")){
+        arrow.classList.remove("down")
+        arrow.classList.add("up")
+    }
+    else{
+        arrow.classList.remove("up")
+        arrow.classList.add("down")
+    }
 }
 
-function filterByStatus(flights, status){
-    flights.forEach((flight) => {
-        const flightStatus = flight.querySelector(".flights__list__flight__header__status").innerText
-        if (flightStatus === status) {
-            flight.style.display = "flex"
-        } 
-        else {
-            flight.style.display = "none" 
-        }
-    });
-}
+const filterDate = document.querySelector("#flights__filter__date")
+const filterAirline = document.querySelector("#flights__filter__airline")
+const filterStatus = document.querySelector("#flights__filter__status")
+const filterTakeoff = document.querySelector("#flights__filter__takeoff")
+const filterTouchdown = document.querySelector("#flights__filter__touchdown")
 
-function filterByTakeoff(flights, takeoff){
-    flights.forEach((flight) => {
-        const flightTakeoff = flight.querySelector(".flights__list__flight__body__departure__timezone").innerText
-        if (flightTakeoff === takeoff) {
-            flight.style.display = "flex"
-        } 
-        else {
-            flight.style.display = "none" 
-        }
-    });
-}
-
-function filterByTouchdown(flights, touchdown){
-    flights.forEach((flight) => {
-        const flightTouchdown = flight.querySelector(".flights__list__flight__body__arrival__timezone").innerText
-        if (flightTouchdown === touchdown) {
-            flight.style.display = "flex"
-        } 
-        else {
-            flight.style.display = "none" 
-        }
-    });
-}   
+const arrowDate = document.querySelector("#dropdown-arrow-date")
+const arrowAirline = document.querySelector("#dropdown-arrow-airline")
+const arrowStatus = document.querySelector("#dropdown-arrow-status")
+const arrowTakeoff = document.querySelector("#dropdown-arrow-takeoff")
+const arrowTouchdown = document.querySelector("#dropdown-arrow-touchdown")
 
 function filterBy(flights, airlines, dates, statuses, takeoffs, touchdowns) {
-    filterDate.addEventListener("click", () => populateDropDown("date", dates, flights))
-    filterAirline.addEventListener("click", () => populateDropDown("airline", airlines, flights))
-    filterStatus.addEventListener("click", () => populateDropDown("status", statuses, flights))
-    filterTakeoff.addEventListener("click", () => populateDropDown("takeoff", takeoffs, flights))
-    filterTouchdown.addEventListener("click", () => populateDropDown("touchdown", touchdowns, flights))
-    // populateDropDown("date", dates, flights)
-    // populateDropDown("airline", airlines, flights)
-    // populateDropDown("status", statuses, flights)
-    // populateDropDown("takeoff", takeoffs, flights)
-    // populateDropDown("touchdown", touchdowns, flights)
+    filterDate.addEventListener("click", () => {
+        populateDropDown("date", dates, flights)
+        toggleArrow(arrowDate)
+    })
+    filterAirline.addEventListener("click", () => {
+        populateDropDown("airline", airlines, flights)
+        toggleArrow(arrowAirline)
+    })
+    filterStatus.addEventListener("click", () => {
+        populateDropDown("status", statuses, flights)
+        toggleArrow(arrowStatus)
+    })  
+    filterTakeoff.addEventListener("click", () => {
+        populateDropDown("takeoff", takeoffs, flights)
+        toggleArrow(arrowTakeoff)
+    })
+    filterTouchdown.addEventListener("click", () => {
+        populateDropDown("touchdown", touchdowns, flights)
+        toggleArrow(arrowTouchdown)
+    })
 }
+
+let selectedFilters = {
+    airlines: new Set(),
+    dates: new Set(),
+    statuses: new Set(),
+    takeoffs: new Set(),
+    touchdowns: new Set()
+}
+
+function applyFilterBy(flights) {
+    flights.forEach((flight) => {
+
+        const flightDate = flight.querySelector(".flights__list__flight__date").innerText.toLowerCase()
+        const flightAirline = flight.querySelector(".flights__list__flight__body__airline-logo").alt.toLowerCase()
+        const flightStatus = flight.querySelector(".flights__list__flight__header__status").innerText.toLowerCase()
+        const flightTakeoff = flight.querySelector(".flights__list__flight__body__departure__timezone").innerText.toLowerCase()
+        const flightTouchdown = flight.querySelector(".flights__list__flight__body__arrival__timezone").innerText.toLowerCase()
+
+        const matchesDate = (selectedFilters.dates.size === 0) || (selectedFilters.dates.has(flightDate))
+        const matchesAirline = (selectedFilters.airlines.size === 0) || (selectedFilters.airlines.has(flightAirline))
+        const matchesStatus = (selectedFilters.statuses.size === 0) || (selectedFilters.statuses.has(flightStatus))
+        const matchesTakeoff = (selectedFilters.takeoffs.size === 0) || (selectedFilters.takeoffs.has(flightTakeoff))
+        const matchesTouchdown = (selectedFilters.touchdowns.size === 0) || (selectedFilters.touchdowns.has(flightTouchdown))
+
+        if (matchesDate && matchesAirline && matchesStatus && matchesTakeoff && matchesTouchdown) 
+            flight.style.display = "flex";
+        else 
+            flight.style.display = "none";
+    })
+}
+
+const dateTitle = document.querySelector("#flights__filter__date")
+const airlineTitle = document.querySelector("#flights__filter__airline")
+const statusTitle = document.querySelector("#flights__filter__status")
+const takeoffTitle = document.querySelector("#flights__filter__takeoff")
+const touchdownTitle = document.querySelector("#flights__filter__touchdown")
 
 const dateOptions = document.querySelector("#flights__filter__date__options")
 const airlineOptions = document.querySelector("#flights__filter__airline__options")
@@ -291,7 +316,6 @@ function populateDropDown(category, data, flights){
             data.forEach((date) => {
                 const checkbox = document.createElement("input")
                 checkbox.type = "checkbox"
-                checkbox.id = date
                 checkbox.classList.add("flights__filter__options-list__options__checkbox")
 
                 const label = document.createElement("label")
@@ -304,21 +328,22 @@ function populateDropDown(category, data, flights){
                 dateChoice.appendChild(label) 
 
                 dateOptions.appendChild(dateChoice)
+
                 checkbox.addEventListener("change", (event) => {
                     if(event.target.checked)
-                        filterByDate(flights, dateChoice.innerText)
+                        (selectedFilters.dates).add(date.toLowerCase())
                     else
-                        flights.forEach((flight) => flight.style.display = "flex")
-                })            
+                        (selectedFilters.dates).delete(date.toLowerCase())
+                    applyFilterBy(flights) 
+                })           
             })
-            toggleDropDown(dateOptions)
+            toggleDropDown(dateOptions, dateTitle)
         break;
         case("airline"): 
             airlineOptions.innerHTML = "";
             data.forEach((airline) => {
                 const checkbox = document.createElement("input")
                 checkbox.type = "checkbox"
-                checkbox.id = airline
                 checkbox.classList.add("flights__filter__options-list__options__checkbox")
 
                 const label = document.createElement("label")
@@ -333,12 +358,13 @@ function populateDropDown(category, data, flights){
                 airlineOptions.appendChild(airlineChoice)
                 checkbox.addEventListener("change", (event) => {
                     if(event.target.checked)
-                        filterByAirline(flights, airlineChoice.innerText)
+                        (selectedFilters.airlines).add(airline.toLowerCase())
                     else
-                        flights.forEach((flight) => flight.style.display = "flex")
-                })
+                        (selectedFilters.airlines).delete(airline.toLowerCase())
+                    applyFilterBy(flights) 
+                })            
             })
-            toggleDropDown(airlineOptions)
+            toggleDropDown(airlineOptions, airlineTitle)
         break;
         case("status"):
             statusOptions.innerHTML = "";
@@ -360,12 +386,13 @@ function populateDropDown(category, data, flights){
                 statusOptions.appendChild(statusChoice)
                 checkbox.addEventListener("change", (event) => {
                     if(event.target.checked)
-                        filterByStatus(flights, statusChoice.innerText)
+                        selectedFilters.statuses.add(status.toLowerCase())
                     else
-                        flights.forEach((flight) => flight.style.display = "flex")
-                })
+                        selectedFilters.statuses.delete(status.toLowerCase())
+                    applyFilterBy(flights) 
+                })         
             })
-            toggleDropDown(statusOptions)
+            toggleDropDown(statusOptions, statusTitle)
         break;
         case("takeoff"):
             takeoffOptions.innerHTML = "";
@@ -387,12 +414,13 @@ function populateDropDown(category, data, flights){
                 takeoffOptions.appendChild(takeoffChoice)
                 checkbox.addEventListener("change", (event) => {
                     if(event.target.checked)
-                        filterByTakeoff(flights, takeoffChoice.innerText)
+                        selectedFilters.takeoffs.add(takeoff.toLowerCase())
                     else
-                        flights.forEach((flight) => flight.style.display = "flex")
+                        selectedFilters.takeoffs.delete(takeoff.toLowerCase())
+                    applyFilterBy(flights) 
                 })
             })
-            toggleDropDown(takeoffOptions)
+            toggleDropDown(takeoffOptions, takeoffTitle)
         break;
         case("touchdown"):
             touchdownOptions.innerHTML = "";
@@ -414,17 +442,13 @@ function populateDropDown(category, data, flights){
                 touchdownOptions.appendChild(touchdownChoice)
                 checkbox.addEventListener("change", (event) => {
                     if(event.target.checked)
-                        filterByTouchdown(flights, touchdownChoice.innerText)
+                        selectedFilters.touchdowns.add(touchdown.toLowerCase())
                     else
-                        flights.forEach((flight) => flight.style.display = "flex")
+                        selectedFilters.touchdowns.delete(touchdown.toLowerCase())
+                    applyFilterBy(flights) 
                 })
             })
-            toggleDropDown(touchdownOptions)
+            toggleDropDown(touchdownOptions, touchdownTitle)
         break;
     }
 }
-
-
-
-{/* <span>&#9654;</span> right triangle*/}
-{/* <span>&#9660;</span> down triangle*/}

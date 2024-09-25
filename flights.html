@@ -9,6 +9,7 @@
     <title>AeroDaily - Today's Flights</title>
   </head>
   <body class="flights">
+    
     <header class="flights__header">
         <div class="flights__header__slogan">Track the Skies & Unveil the Aviation World</div>
         <div class="flights__header__pages"> 
@@ -19,6 +20,7 @@
           <div class="flights__header__pages__buttons" id="aircrafts">Aircrafts</div> 
         </div>
     </header>
+    
     <div class="flights__bar">
         <img class="flights__bar__logo" src="images/aerodailynobg.png" alt="AeroDaily">        
         <input class="flights__bar__search" type="text" placeholder="Search for flights' numbers, airlines, destinations, status, etc...">
@@ -29,49 +31,20 @@
         <div class="flights__filter">
             <div class="flights__filter__header">Filter</div>
 
-            <div class="flights__filter__titles" id="flights__filter__date">Flight Date <i class="dropdown-arrow down"></i></div>
+            <div class="flights__filter__titles" id="flights__filter__date">Flight Date <i id="dropdown-arrow-date" class="dropdown-arrow down"></i></div>
             <div id="flights__filter__date__options" class="flights__filter__options-list"></div>
 
-            <div class="flights__filter__titles" id="flights__filter__airline">Airline Name <i class="dropdown-arrow down"></i></div>
+            <div class="flights__filter__titles" id="flights__filter__airline">Airline Name <i id="dropdown-arrow-airline" class="dropdown-arrow down"></i></div>
             <div id="flights__filter__airline__options" class="flights__filter__options-list"></div>
 
-            <div class="flights__filter__titles" id="flights__filter__status">Flight Status <i class="dropdown-arrow down"></i></div>
+            <div class="flights__filter__titles" id="flights__filter__status">Flight Status <i id="dropdown-arrow-status" class="dropdown-arrow down"></i></div>
             <div id="flights__filter__status__options" class="flights__filter__options-list"></div>
 
-            <div class="flights__filter__titles" id="flights__filter__takeoff">Takeoff <i class="dropdown-arrow down"></i></div>
+            <div class="flights__filter__titles" id="flights__filter__takeoff">Takeoff <i id="dropdown-arrow-takeoff" class="dropdown-arrow down"></i></div>
             <div id="flights__filter__takeoff__options" class="flights__filter__options-list"></div>
 
-            <div class="flights__filter__titles" id="flights__filter__touchdown">Touchdown <i class="dropdown-arrow down"></i></div>
+            <div class="flights__filter__titles" id="flights__filter__touchdown">Touchdown <i id="dropdown-arrow-touchdown" class="dropdown-arrow down"></i></div>
             <div id="flights__filter__touchdown__options" class="flights__filter__options-list"></div>
-            
-            <!-- 
-                <div class="flights__bar__filter__options__date">
-                    <button id="flights__bar__filter__options__date">Date <span>&#9654;</span></button>
-                    <div class="flights__bar__filter__options__date__options"></div>
-                </div>
-
-                <div class="flights__bar__filter__options__airline">
-                    <button id="flights__bar__filter__options__airline">Airline <span>&#9654;</span></button>
-                    <div class="flights__bar__filter__options__airline__options"></div>
-                </div>
-
-                <div class="flights__bar__filter__options__status">
-                    <button id="flights__bar__filter__options__status">Status <span>&#9654;</span></button>
-                    <div class="flights__bar__filter__options__status__options"></div>
-                </div>
-
-                <div class="flights__bar__filter__options__takeoff">
-                    <button id="flights__bar__filter__options__takeoff">Takeoff <span>&#9654;</span></button>
-                    <div class="flights__bar__filter__options__takeoff__options"></div>
-                </div>
-
-                <div class="flights__bar__filter__options__touchdown">
-                    <button id="flights__bar__filter__options__touchdown">Touchdown <span>&#9654;</span></button>
-                    <div class="flights__bar__filter__options__touchdown__options"></div>
-                </div>
-
-            </div>
-        </div> -->
         </div>
 
         <div class="flights__list">
