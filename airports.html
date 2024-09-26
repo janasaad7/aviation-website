@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" class="fa-solid fa-plane">
+    <link rel="stylesheet" href=".\style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AeroDaily - Airports</title>
+  </head>
+  <body class="airports">
+    
+    <header class="header">
+        <div class="header__slogan">Track the Skies & Unveil the Aviation World</div>
+        <div class="header__pages"> 
+          <div class="header__pages__buttons" id="home">Home</div>
+          <div class="header__pages__buttons" id="airports">airports</div>
+          <div class="header__pages__buttons" id="airports">Airports</div> 
+          <div class="header__pages__buttons" id="airlines">Airlines</div> 
+          <div class="header__pages__buttons" id="aircrafts">Aircrafts</div> 
+        </div>
+    </header>
+
+    <div class="bar">
+        <img class="bar__logo" src="images/aerodailynobg.png" alt="AeroDaily">        
+        <input class="bar__search" type="text" placeholder="Search for airports' codes, names, countries, timezones, etc...">
+    </div>
+
+    <div class="airports__container">
+
+        <div class="filter">
+            <div class="filter__header">Filter</div>
+
+            <div class="filter__titles" id="airports__filter__africa">Africa <i id="dropdown-arrow-africa" class="dropdown-arrow down"></i></div>
+            <div  class="filter__options-list" id="airports__container__filter__africa__options"></div>
+
+            <div class="filter__titles" id="airports__filter__asia">Asia <i id="dropdown-arrow-asia" class="dropdown-arrow down"></i></div>
+            <div  class="filter__options-list" id="airports__container__filter__asia__options"></div>
+
+            <div class="filter__titles" id="airports__filter__europe">Europe <i id="dropdown-arrow-europe" class="dropdown-arrow down"></i></div>
+            <div  class="filter__options-list" id="airports__container__filter__europe__options"></div>
+
+            <div class="filter__titles" id="airports__filter__australia">Australia <i id="dropdown-arrow-australia" class="dropdown-arrow down"></i></div>
+            <div  class="filter__options-list" id="airports__container__filter__australia__options"></div>
+
+            <div class="filter__titles" id="airports__filter__pacific">Pacific <i id="dropdown-arrow-pacific" class="dropdown-arrow down"></i></div>
+            <div  class="filter__options-list" id="airports__container__filter__pacific__options"></div>
+
+            <div class="filter__titles" id="airports__filter__atlantic">Atlantic <i id="dropdown-arrow-atlantic" class="dropdown-arrow down"></i></div>
+            <div  class="filter__options-list" id="airports__container__filter__atlantic__options"></div>
+        
+            <div class="filter__titles" id="airports__filter__america">America <i id="dropdown-arrow-america" class="dropdown-arrow down"></i></div>
+            <div  class="filter__options-list" id="airports__container__filter__america__options"></div>
+        </div>
+        <div class="loading">
+            <img class="airports__loading__img" src="images/loading.gif" alt="Flying Plane">
+        </div>
+        <div class="airports__container__list">
+            <template id="airport-temp">
+                <section class="airports__container__list__airport">
+                    <div class="airports__container__list__airport__header">
+                        <div class="airports__container__list__airport__header__iata"></div>
+                    </div>
+                    <div class="airports__container__list__airport__body">
+                        <div class="airports__container__list__airport__body__name"></div>
+                        <div class="airports__container__list__airport__body__country"><i class="fas fa-map-pin"></i></div>
+                        <div class="airports__container__list__airport__body__timezone"><i class="fas fa-globe"></i></div>
+                    </div>
+                </section>
+            </template>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/f609cfd414.js" crossorigin="anonymous"></script>
+    <script type="module" src="/airports.js" defer></script>
+  </body>
+</html>
+
+<!-- "fas fa-map-pin" 
+"fas fa-map-marker-alt"  -->

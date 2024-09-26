@@ -10,44 +10,44 @@
   </head>
   <body class="flights">
     
-    <header class="flights__header">
-        <div class="flights__header__slogan">Track the Skies & Unveil the Aviation World</div>
-        <div class="flights__header__pages"> 
-          <div class="flights__header__pages__buttons" id="home">Home</div>
-          <div class="flights__header__pages__buttons" id="flights">Flights</div>
-          <div class="flights__header__pages__buttons" id="airports">Airports</div> 
-          <div class="flights__header__pages__buttons" id="airlines">Airlines</div> 
-          <div class="flights__header__pages__buttons" id="aircrafts">Aircrafts</div> 
+    <header class="header">
+        <div class="header__slogan">Track the Skies & Unveil the Aviation World</div>
+        <div class="header__pages"> 
+          <div class="header__pages__buttons" id="home">Home</div>
+          <div class="header__pages__buttons" id="flights">Flights</div>
+          <div class="header__pages__buttons" id="airports">Airports</div> 
+          <div class="header__pages__buttons" id="airlines">Airlines</div> 
+          <div class="header__pages__buttons" id="aircrafts">Aircrafts</div> 
         </div>
     </header>
     
-    <div class="flights__bar">
-        <img class="flights__bar__logo" src="images/aerodailynobg.png" alt="AeroDaily">        
-        <input class="flights__bar__search" type="text" placeholder="Search for flights' numbers, airlines, destinations, status, etc...">
+    <div class="bar">
+        <img class="bar__logo" src="images/aerodailynobg.png" alt="AeroDaily">        
+        <input class="bar__search" type="text" placeholder="Search for flights' numbers, airlines, destinations, status, etc...">
     </div>
 
     <div class="flights__container">
 
-        <div class="flights__filter">
-            <div class="flights__filter__header">Filter</div>
+        <div class="filter">
+            <div class="filter__header">Filter</div>
 
-            <div class="flights__filter__titles" id="flights__filter__date">Flight Date <i id="dropdown-arrow-date" class="dropdown-arrow down"></i></div>
-            <div id="flights__filter__date__options" class="flights__filter__options-list"></div>
+            <div class="filter__titles" id="flights__filter__date">Flight Date <i id="dropdown-arrow-date" class="dropdown-arrow down"></i></div>
+            <div class="filter__options-list" id="flights__filter__date__options"></div>
 
-            <div class="flights__filter__titles" id="flights__filter__airline">Airline Name <i id="dropdown-arrow-airline" class="dropdown-arrow down"></i></div>
-            <div id="flights__filter__airline__options" class="flights__filter__options-list"></div>
+            <div class="filter__titles" id="flights__filter__airline">Airline Name <i id="dropdown-arrow-airline" class="dropdown-arrow down"></i></div>
+            <div class="filter__options-list" id="flights__filter__airline__options"></div>
 
-            <div class="flights__filter__titles" id="flights__filter__status">Flight Status <i id="dropdown-arrow-status" class="dropdown-arrow down"></i></div>
-            <div id="flights__filter__status__options" class="flights__filter__options-list"></div>
+            <div class="filter__titles" id="flights__filter__status">Flight Status <i id="dropdown-arrow-status" class="dropdown-arrow down"></i></div>
+            <div class="filter__options-list" id="flights__filter__status__options"></div>
 
-            <div class="flights__filter__titles" id="flights__filter__takeoff">Takeoff <i id="dropdown-arrow-takeoff" class="dropdown-arrow down"></i></div>
-            <div id="flights__filter__takeoff__options" class="flights__filter__options-list"></div>
+            <div class="filter__titles" id="flights__filter__takeoff">Takeoff <i id="dropdown-arrow-takeoff" class="dropdown-arrow down"></i></div>
+            <div class="filter__options-list" id="flights__filter__takeoff__options"></div>
 
-            <div class="flights__filter__titles" id="flights__filter__touchdown">Touchdown <i id="dropdown-arrow-touchdown" class="dropdown-arrow down"></i></div>
-            <div id="flights__filter__touchdown__options" class="flights__filter__options-list"></div>
+            <div class="filter__titles" id="flights__filter__touchdown">Touchdown <i id="dropdown-arrow-touchdown" class="dropdown-arrow down"></i></div>
+            <div class="filter__options-list" id="flights__filter__touchdown__options"></div>
         </div>
-        <div class="flights__loading">
-            <img class="flights__loading__img" src="images/loading.gif" alt="Flying Plane">
+        <div class="loading">
+            <img class="loading__img" src="images/loading.gif" alt="Flying Plane">
         </div>
         <div class="flights__list">
             <template id="flight-temp">

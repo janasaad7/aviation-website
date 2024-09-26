@@ -1,11 +1,11 @@
-import { navigationBar } from './main.js';
+import { navigationBar  , populateAndSelectFilters } from './main.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     navigationBar()
-    const accessKey = 'e2cc03395d0d309abf0946b23661fe70'
+    const accessKey = '67855f922d2032559af9fd6211988932s'
     const url = `https://api.aviationstack.com/v1/flights?access_key=${accessKey}`
 
-    const loading = document.querySelector(".flights__loading");
+    const loading = document.querySelector(".loading");
     loading.style.display = "block"; 
 
     fetch(url)
@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 flightsList.appendChild(flightTemp)
             })
             const flights = document.querySelectorAll(".flights__list__flight")
-            const searchInput = document.querySelector(".flights__bar__search")
+            const searchInput = document.querySelector(".bar__search")
             searchInput.addEventListener("input", () => search(flights,searchInput.value))
             filterBy(flights, airlines, dates, statuses, takeoffs, touchdowns)
         })
@@ -216,26 +216,6 @@ function search(flights, searchInputValue){
     })
 }
 
-function toggleDropDown(options, title){
-    if (options.style.display === "block") {
-        options.style.display = "none";
-        title.style.marginBottom = "10%";
-    } else {
-        options.style.display = "block";
-    }
-}
-
-function toggleArrow(arrow){
-    if(arrow.classList.contains("down")){
-        arrow.classList.remove("down")
-        arrow.classList.add("up")
-    }
-    else{
-        arrow.classList.remove("up")
-        arrow.classList.add("down")
-    }
-}
-
 const filterDate = document.querySelector("#flights__filter__date")
 const filterAirline = document.querySelector("#flights__filter__airline")
 const filterStatus = document.querySelector("#flights__filter__status")
@@ -247,59 +227,6 @@ const arrowAirline = document.querySelector("#dropdown-arrow-airline")
 const arrowStatus = document.querySelector("#dropdown-arrow-status")
 const arrowTakeoff = document.querySelector("#dropdown-arrow-takeoff")
 const arrowTouchdown = document.querySelector("#dropdown-arrow-touchdown")
-
-function filterBy(flights, airlines, dates, statuses, takeoffs, touchdowns) {
-    filterDate.addEventListener("click", () => {
-        populateDropDown("date", dates, flights)
-        toggleArrow(arrowDate)
-    })
-    filterAirline.addEventListener("click", () => {
-        populateDropDown("airline", airlines, flights)
-        toggleArrow(arrowAirline)
-    })
-    filterStatus.addEventListener("click", () => {
-        populateDropDown("status", statuses, flights)
-        toggleArrow(arrowStatus)
-    })  
-    filterTakeoff.addEventListener("click", () => {
-        populateDropDown("takeoff", takeoffs, flights)
-        toggleArrow(arrowTakeoff)
-    })
-    filterTouchdown.addEventListener("click", () => {
-        populateDropDown("touchdown", touchdowns, flights)
-        toggleArrow(arrowTouchdown)
-    })
-}
-
-let selectedFilters = {
-    airlines: new Set(),
-    dates: new Set(),
-    statuses: new Set(),
-    takeoffs: new Set(),
-    touchdowns: new Set()
-}
-
-function applyFilterBy(flights) {
-    flights.forEach((flight) => {
-
-        const flightDate = flight.querySelector(".flights__list__flight__date").innerText.toLowerCase()
-        const flightAirline = flight.querySelector(".flights__list__flight__body__airline-logo").alt.toLowerCase()
-        const flightStatus = flight.querySelector(".flights__list__flight__header__status").innerText.toLowerCase()
-        const flightTakeoff = flight.querySelector(".flights__list__flight__body__departure__timezone").innerText.toLowerCase()
-        const flightTouchdown = flight.querySelector(".flights__list__flight__body__arrival__timezone").innerText.toLowerCase()
-
-        const matchesDate = (selectedFilters.dates.size === 0) || (selectedFilters.dates.has(flightDate))
-        const matchesAirline = (selectedFilters.airlines.size === 0) || (selectedFilters.airlines.has(flightAirline))
-        const matchesStatus = (selectedFilters.statuses.size === 0) || (selectedFilters.statuses.has(flightStatus))
-        const matchesTakeoff = (selectedFilters.takeoffs.size === 0) || (selectedFilters.takeoffs.has(flightTakeoff))
-        const matchesTouchdown = (selectedFilters.touchdowns.size === 0) || (selectedFilters.touchdowns.has(flightTouchdown))
-
-        if (matchesDate && matchesAirline && matchesStatus && matchesTakeoff && matchesTouchdown) 
-            flight.style.display = "flex";
-        else 
-            flight.style.display = "none";
-    })
-}
 
 const dateTitle = document.querySelector("#flights__filter__date")
 const airlineTitle = document.querySelector("#flights__filter__airline")
@@ -313,146 +240,32 @@ const statusOptions = document.querySelector("#flights__filter__status__options"
 const takeoffOptions = document.querySelector("#flights__filter__takeoff__options")
 const touchdownOptions = document.querySelector("#flights__filter__touchdown__options")
 
-function populateDropDown(category, data, flights){
-    switch(category){
-        case("date"):
-            dateOptions.innerHTML = "";
-            data.forEach((date) => {
-                const checkbox = document.createElement("input")
-                checkbox.type = "checkbox"
-                checkbox.classList.add("flights__filter__options-list__options__checkbox")
+let selectedFilters = {
+    airline: new Set(),
+    date: new Set(),
+    status: new Set(),
+    takeoff: new Set(),
+    touchdown: new Set()
+}
 
-                const label = document.createElement("label")
-                label.innerText = date
-                label.classList.add("flights__filter__options-list__options__labels")
-
-                const dateChoice = document.createElement("div")
-                dateChoice.classList.add("flights__filter__options-list__options")
-                dateChoice.appendChild(checkbox) 
-                dateChoice.appendChild(label) 
-
-                dateOptions.appendChild(dateChoice)
-
-                checkbox.addEventListener("change", (event) => {
-                    if(event.target.checked)
-                        (selectedFilters.dates).add(date.toLowerCase())
-                    else
-                        (selectedFilters.dates).delete(date.toLowerCase())
-                    applyFilterBy(flights) 
-                })           
-            })
-            toggleDropDown(dateOptions, dateTitle)
-        break;
-        case("airline"): 
-            airlineOptions.innerHTML = "";
-            data.forEach((airline) => {
-                const checkbox = document.createElement("input")
-                checkbox.type = "checkbox"
-                checkbox.classList.add("flights__filter__options-list__options__checkbox")
-
-                const label = document.createElement("label")
-                label.innerText = airline
-                label.classList.add("flights__filter__options-list__options__labels")
-
-                const airlineChoice = document.createElement("div")
-                airlineChoice.classList.add("flights__filter__options-list__options")
-                airlineChoice.appendChild(checkbox) 
-                airlineChoice.appendChild(label) 
-
-                airlineOptions.appendChild(airlineChoice)
-                checkbox.addEventListener("change", (event) => {
-                    if(event.target.checked)
-                        (selectedFilters.airlines).add(airline.toLowerCase())
-                    else
-                        (selectedFilters.airlines).delete(airline.toLowerCase())
-                    applyFilterBy(flights) 
-                })            
-            })
-            toggleDropDown(airlineOptions, airlineTitle)
-        break;
-        case("status"):
-            statusOptions.innerHTML = "";
-            data.forEach((status) => {
-                const checkbox = document.createElement("input")
-                checkbox.type = "checkbox"
-                checkbox.id = status
-                checkbox.classList.add("flights__filter__options-list__options__checkbox")
-
-                const label = document.createElement("label")
-                label.innerText = status
-                label.classList.add("flights__filter__options-list__options__labels")
-
-                const statusChoice = document.createElement("div")
-                statusChoice.classList.add("flights__filter__options-list__options")
-                statusChoice.appendChild(checkbox) 
-                statusChoice.appendChild(label) 
-
-                statusOptions.appendChild(statusChoice)
-                checkbox.addEventListener("change", (event) => {
-                    if(event.target.checked)
-                        selectedFilters.statuses.add(status.toLowerCase())
-                    else
-                        selectedFilters.statuses.delete(status.toLowerCase())
-                    applyFilterBy(flights) 
-                })         
-            })
-            toggleDropDown(statusOptions, statusTitle)
-        break;
-        case("takeoff"):
-            takeoffOptions.innerHTML = "";
-            data.forEach((takeoff) => {
-                const checkbox = document.createElement("input")
-                checkbox.type = "checkbox"
-                checkbox.id = takeoff
-                checkbox.classList.add("flights__filter__options-list__options__checkbox")
-
-                const label = document.createElement("label")
-                label.innerText = takeoff
-                label.classList.add("flights__filter__options-list__options__labels")
-
-                const takeoffChoice = document.createElement("div")
-                takeoffChoice.classList.add("flights__filter__options-list__options")
-                takeoffChoice.appendChild(checkbox) 
-                takeoffChoice.appendChild(label) 
-
-                takeoffOptions.appendChild(takeoffChoice)
-                checkbox.addEventListener("change", (event) => {
-                    if(event.target.checked)
-                        selectedFilters.takeoffs.add(takeoff.toLowerCase())
-                    else
-                        selectedFilters.takeoffs.delete(takeoff.toLowerCase())
-                    applyFilterBy(flights) 
-                })
-            })
-            toggleDropDown(takeoffOptions, takeoffTitle)
-        break;
-        case("touchdown"):
-            touchdownOptions.innerHTML = "";
-            data.forEach((touchdown) => {
-                const checkbox = document.createElement("input")
-                checkbox.type = "checkbox"
-                checkbox.id = touchdown
-                checkbox.classList.add("flights__filter__options-list__options__checkbox")
-
-                const label = document.createElement("label")
-                label.innerText = touchdown
-                label.classList.add("flights__filter__options-list__options__labels")
-
-                const touchdownChoice = document.createElement("div")
-                touchdownChoice.classList.add("flights__filter__options-list__options")
-                touchdownChoice.appendChild(checkbox) 
-                touchdownChoice.appendChild(label) 
-
-                touchdownOptions.appendChild(touchdownChoice)
-                checkbox.addEventListener("change", (event) => {
-                    if(event.target.checked)
-                        selectedFilters.touchdowns.add(touchdown.toLowerCase())
-                    else
-                        selectedFilters.touchdowns.delete(touchdown.toLowerCase())
-                    applyFilterBy(flights) 
-                })
-            })
-            toggleDropDown(touchdownOptions, touchdownTitle)
-        break;
-    }
+function filterBy(flights, airlines, dates, statuses, takeoffs, touchdowns) {
+    filterDate.addEventListener("click", () => {
+        populateAndSelectFilters("date", dates, dateOptions, dateTitle, arrowDate, selectedFilters, flights, "flights")
+    })
+    filterAirline.addEventListener("click", () => {
+        populateAndSelectFilters("airline", airlines, airlineOptions, airlineTitle, arrowAirline, selectedFilters, flights, "flights")
+        toggleArrow(arrowAirline)
+    })
+    filterStatus.addEventListener("click", () => {
+        populateAndSelectFilters("status", statuses, statusOptions, statusTitle, arrowStatus, selectedFilters, flights, "flights")
+        toggleArrow(arrowStatus)
+    })  
+    filterTakeoff.addEventListener("click", () => {
+        populateAndSelectFilters("takeoff", takeoffs, takeoffOptions, takeoffTitle, arrowTakeoff, selectedFilters, flights, "flights")
+        toggleArrow(arrowTakeoff)
+    })
+    filterTouchdown.addEventListener("click", () => {
+        populateAndSelectFilters("touchdown", touchdowns, touchdownOptions, touchdownTitle, arrowTouchdown, selectedFilters, flights, "flights")
+        toggleArrow(arrowTouchdown)
+    })
 }
