@@ -5,9 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const accessKey = 'e2cc03395d0d309abf0946b23661fe70'
     const url = `https://api.aviationstack.com/v1/flights?access_key=${accessKey}`
 
+    const loading = document.querySelector(".flights__loading");
+    loading.style.display = "block"; 
+
     fetch(url)
         .then((response) => response.json())
         .then((data) => {
+            loading.style.display = "none";
             const result = data.data
             const flightsList = document.querySelector(".flights__list")
             const template = document.querySelector("#flight-temp").content

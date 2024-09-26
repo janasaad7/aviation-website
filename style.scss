@@ -127,6 +127,13 @@
         display: flex;
         margin-top: 5%;
     }
+    &__loading{
+        display: none;
+        width:500px;;
+        text-align: center;
+        position: absolute;
+        left: 30%;
+    }
     &__filter{
         margin-left: 5%;
         margin-top: 0;
