@@ -159,8 +159,8 @@
     width: 100%;
     margin-bottom: 2%;
     margin-left: 0;
-    height: -moz-min-content;
-    height: min-content;
+    padding-left: 45px;
+    height: 80px;
     flex-wrap: wrap;
     position: sticky;
     top: 120px;
@@ -175,15 +175,16 @@
 }
 @media screen and (max-width: 790px) {
   .filter__header {
-    margin-bottom: 0;
-    margin-right: 10px;
+    display: none;
   }
 }
 @media screen and (max-width: 1360px) {
   .filter__header--small {
-    margin-bottom: 0;
-    margin-right: 10px;
+    display: none;
   }
+}
+.filter__titleAndOptions {
+  position: relative;
 }
 .filter__titles {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -197,13 +198,13 @@
 @media screen and (max-width: 790px) {
   .filter__titles {
     margin-bottom: 0;
-    margin-right: 10px;
+    margin-right: 50px;
   }
 }
 @media screen and (max-width: 1360px) {
   .filter__titles--small {
     margin-bottom: 0;
-    margin-right: 10px;
+    margin-right: 90px;
   }
 }
 .filter__options-list {
@@ -214,16 +215,25 @@
 @media screen and (max-width: 790px) {
   .filter__options-list {
     margin-bottom: 0;
-    top: 50px;
+    width: 120px;
     position: absolute;
-    width: 200px;
+    top: 50px;
+    right: 40px;
+    background-color: white;
+    height: -moz-fit-content;
+    height: fit-content;
   }
 }
 @media screen and (max-width: 1360px) {
   .filter__options-list--small {
     margin-bottom: 0;
+    width: 120px;
     position: absolute;
-    width: 200px;
+    top: 50px;
+    right: 40px;
+    background-color: white;
+    height: -moz-fit-content;
+    height: fit-content;
   }
 }
 .filter__options-list__options {

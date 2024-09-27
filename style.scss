@@ -151,7 +151,8 @@
             width: 100%;
             margin-bottom: 2%;
             margin-left: 0;
-            height: min-content;
+            padding-left: 45px;
+            height: 80px;
             flex-wrap: wrap;
             position: sticky;
             top: 120px;
@@ -164,15 +165,16 @@
         margin-bottom: 20%;
         font-family: "DIN Next", sans-serif;
         @media screen and (max-width: 790px) {
-            margin-bottom: 0; 
-            margin-right: 10px;
+            display: none;
         }
         &--small{
             @media screen and (max-width: 1360px) {
-                margin-bottom: 0; 
-                margin-right: 10px;
+                display: none;
             }
         }
+    }
+    &__titleAndOptions{
+        position: relative;
     }
     &__titles{
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -184,12 +186,12 @@
         }
         @media screen and (max-width: 790px) {
             margin-bottom: 0;
-            margin-right: 10px;
+            margin-right: 50px;
         }
         &--small{
             @media screen and (max-width: 1360px) {
-            margin-bottom: 0;
-            margin-right: 10px;
+                margin-bottom: 0;
+                margin-right: 90px;
             }
         }
     }
@@ -198,16 +200,23 @@
         display: flex;
         margin-bottom: 5%;
         @media screen and (max-width: 790px) {
-            margin-bottom: 0;
-            top: 50px;
+            margin-bottom: 0;                
+            width: 120px;
             position: absolute;
-            width: 200px;
+            top: 50px;
+            right: 40px;
+            background-color: white;
+            height: fit-content;
         }
         &--small{
             @media screen and (max-width: 1360px) {
-                margin-bottom: 0;
+                margin-bottom: 0;                
+                width: 120px;
                 position: absolute;
-                width: 200px;
+                top: 50px;
+                right: 40px;
+                background-color: white;
+                height: fit-content;
             }
         }
         &__options{
@@ -221,6 +230,10 @@
             }   
         }
     }
+}
+
+@mixin options-responsive(){
+
 }
 
 .loading{
