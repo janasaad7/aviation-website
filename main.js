@@ -58,6 +58,10 @@ export function populateAndSelectFilters(filter, dataset, filterOptions, filterT
         checkbox.type = "checkbox"
         checkbox.classList.add("filter__options-list__options__checkbox")
 
+        if (selectedFilters[filter].has(data.toLowerCase())) {
+            checkbox.checked = true
+        }
+
         const label = document.createElement("label")
         label.innerText = data
         label.classList.add("filter__options-list__options__labels")
@@ -106,7 +110,16 @@ export function applySelectedFilters(list, selectedFilters, page) {
         case "airports":
             list.forEach((airport) => {
                 const airportCountry = airport.querySelector(".airports__container__list__airport__body__country").innerText.toLowerCase()
-                if (selectedFilters.africa.has(airportCountry) || selectedFilters.asia.has(airportCountry) || selectedFilters.europe.has(airportCountry) || selectedFilters.australia.has(airportCountry) || selectedFilters.pacific.has(airportCountry) || selectedFilters.atlantic.has(airportCountry) || selectedFilters.america.has(airportCountry))
+                
+                const matchesAfrica = (selectedFilters.africa.size === 0) || (selectedFilters.africa.has(airportCountry))
+                const matchesAsia = (selectedFilters.asia.size === 0) || (selectedFilters.asia.has(airportCountry))
+                const matchesEurope = (selectedFilters.europe.size === 0) || (selectedFilters.europe.has(airportCountry))
+                const matchesAustralia = (selectedFilters.australia.size === 0) || (selectedFilters.australia.has(airportCountry))
+                const matchesPacific = (selectedFilters.pacific.size === 0) || (selectedFilters.pacific.has(airportCountry))
+                const matchesAtlantic = (selectedFilters.atlantic.size === 0) || (selectedFilters.atlantic.has(airportCountry))
+                const matchesAmerica = (selectedFilters.america.size === 0) || (selectedFilters.america.has(airportCountry))
+
+                if (matchesAfrica && matchesAsia && matchesEurope && matchesAustralia && matchesPacific && matchesAtlantic && matchesAmerica)
                     airport.style.display = "flex";
                 else
                     airport.style.display = "none";

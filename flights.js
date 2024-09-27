@@ -218,29 +218,18 @@ function search(flights, searchInputValue){
     })
 }
 
-const filterDate = document.querySelector("#flights__filter__date")
-const filterAirline = document.querySelector("#flights__filter__airline")
-const filterStatus = document.querySelector("#flights__filter__status")
-const filterTakeoff = document.querySelector("#flights__filter__takeoff")
-const filterTouchdown = document.querySelector("#flights__filter__touchdown")
+const filterTitles = ["#flights__filter__date", "#flights__filter__airline", "#flights__filter__status", "#flights__filter__takeoff", "#flights__filter__touchdown"]
+const filterElements = filterTitles.map(selector => document.querySelector(selector))
 
-const arrowDate = document.querySelector("#dropdown-arrow-date")
-const arrowAirline = document.querySelector("#dropdown-arrow-airline")
-const arrowStatus = document.querySelector("#dropdown-arrow-status")
-const arrowTakeoff = document.querySelector("#dropdown-arrow-takeoff")
-const arrowTouchdown = document.querySelector("#dropdown-arrow-touchdown")
+const filterArrows = ["#dropdown-arrow-date", "#dropdown-arrow-airline", "#dropdown-arrow-status", "#dropdown-arrow-takeoff", "#dropdown-arrow-touchdown"]
+const arrowElements = filterArrows.map(selector => document.querySelector(selector))
 
-const dateTitle = document.querySelector("#flights__filter__date")
-const airlineTitle = document.querySelector("#flights__filter__airline")
-const statusTitle = document.querySelector("#flights__filter__status")
-const takeoffTitle = document.querySelector("#flights__filter__takeoff")
-const touchdownTitle = document.querySelector("#flights__filter__touchdown")
+const filtersOptions = ["#flights__filter__date__options", "#flights__filter__airline__options", "#flights__filter__status__options", "#flights__filter__takeoff__options", "#flights__filter__touchdown__options"]
+const optionsElements = filtersOptions.map(selector => document.querySelector(selector))
 
-const dateOptions = document.querySelector("#flights__filter__date__options")
-const airlineOptions = document.querySelector("#flights__filter__airline__options")
-const statusOptions = document.querySelector("#flights__filter__status__options")
-const takeoffOptions = document.querySelector("#flights__filter__takeoff__options")
-const touchdownOptions = document.querySelector("#flights__filter__touchdown__options")
+const [dateTitle, airlineTitle, statusTitle, takeoffTitle, touchdownTitle] = filterElements
+const [arrowDate, arrowAirline, arrowStatus, arrowTakeoff, arrowTouchdown] = arrowElements
+const [dateOptions, airlineOptions, statusOptions, takeoffOptions, touchdownOptions] = optionsElements
 
 let selectedFilters = {
     airline: new Set(),
@@ -251,23 +240,19 @@ let selectedFilters = {
 }
 
 function filterBy(flights, airlines, dates, statuses, takeoffs, touchdowns) {
-    filterDate.addEventListener("click", () => {
+    dateTitle.addEventListener("click", () => {
         populateAndSelectFilters("date", dates, dateOptions, dateTitle, arrowDate, selectedFilters, flights, "flights")
     })
-    filterAirline.addEventListener("click", () => {
+    airlineTitle.addEventListener("click", () => {
         populateAndSelectFilters("airline", airlines, airlineOptions, airlineTitle, arrowAirline, selectedFilters, flights, "flights")
-        toggleArrow(arrowAirline)
     })
-    filterStatus.addEventListener("click", () => {
+    statusTitle.addEventListener("click", () => {
         populateAndSelectFilters("status", statuses, statusOptions, statusTitle, arrowStatus, selectedFilters, flights, "flights")
-        toggleArrow(arrowStatus)
     })  
-    filterTakeoff.addEventListener("click", () => {
+    takeoffTitle.addEventListener("click", () => {
         populateAndSelectFilters("takeoff", takeoffs, takeoffOptions, takeoffTitle, arrowTakeoff, selectedFilters, flights, "flights")
-        toggleArrow(arrowTakeoff)
     })
-    filterTouchdown.addEventListener("click", () => {
+    touchdownTitle.addEventListener("click", () => {
         populateAndSelectFilters("touchdown", touchdowns, touchdownOptions, touchdownTitle, arrowTouchdown, selectedFilters, flights, "flights")
-        toggleArrow(arrowTouchdown)
     })
 }

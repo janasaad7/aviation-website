@@ -81,6 +81,7 @@
     right: 0;
     left: 0;
     z-index: 999;
+    width: 100%;
     &__slogan{
         padding: 2%;
         color:rgb(235, 140, 17);
@@ -133,11 +134,45 @@
     height: fit-content;
     display: flex;
     flex-direction: column;
+    @media screen and (max-width: 790px) {
+        flex-direction: row;
+        width: 100%;
+        margin-bottom: 2%;
+        margin-left: 0;
+        height: fit-content;
+        flex-wrap: wrap;
+        position: sticky;
+        top: 120px;
+        z-index: 999;
+    }
+    &--small{
+        @media screen and (max-width: 1360px) {
+            flex-direction: row;
+            width: 100%;
+            margin-bottom: 2%;
+            margin-left: 0;
+            height: min-content;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 120px;
+            z-index: 999;
+        }
+    }
     &__header{
         font-weight: 700;
         font-size: 25px;
         margin-bottom: 20%;
         font-family: "DIN Next", sans-serif;
+        @media screen and (max-width: 790px) {
+            margin-bottom: 0; 
+            margin-right: 10px;
+        }
+        &--small{
+            @media screen and (max-width: 1360px) {
+                margin-bottom: 0; 
+                margin-right: 10px;
+            }
+        }
     }
     &__titles{
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -147,11 +182,34 @@
         &:hover{
             cursor: pointer;
         }
+        @media screen and (max-width: 790px) {
+            margin-bottom: 0;
+            margin-right: 10px;
+        }
+        &--small{
+            @media screen and (max-width: 1360px) {
+            margin-bottom: 0;
+            margin-right: 10px;
+            }
+        }
     }
     &__options-list{
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         display: flex;
         margin-bottom: 5%;
+        @media screen and (max-width: 790px) {
+            margin-bottom: 0;
+            top: 50px;
+            position: absolute;
+            width: 200px;
+        }
+        &--small{
+            @media screen and (max-width: 1360px) {
+                margin-bottom: 0;
+                position: absolute;
+                width: 200px;
+            }
+        }
         &__options{
             margin-left: 5%;
             display: flex;
@@ -173,11 +231,22 @@
     left: 30%;
 }
 
+@mixin textwrap(){
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
 .flights{
     background-color: rgb(235, 233, 233);
     &__container{
         display: flex;
         margin-top: 5%;
+        @media screen and (max-width: 790px) {
+            flex-direction: column;
+            margin: 2%;
+            align-items: center;
+        }
     }
     &__list{
         display: flex;
@@ -186,6 +255,9 @@
         margin: 5%;
         margin-top: 0;
         width: 100%;
+        @media screen and (max-width: 790px) {
+            margin: 0px;
+        }
         &__flight{
             display: flex;
             flex-direction: column;
@@ -235,6 +307,7 @@
             }
             &__body{
                 display: grid;
+                width: 100%;
                 grid-template-columns: 20% 1fr 1fr 1fr;
                 color: #000536;
                 text-align: center;
@@ -257,6 +330,11 @@
                     }
                     &__timezone{
                         font-size: 1.2rem;
+                    }
+                }
+                &__arrow{
+                    @media screen and (max-width: 585px) {
+                        width: 150px;
                     }
                 }
                 &__arrival{
@@ -283,6 +361,11 @@
     &__container{
         display: flex;
         margin-top: 5%;
+        @media screen and (max-width: 1360px) {
+            flex-direction: column;
+            margin: 2%;
+            align-items: center;
+        }
         &__list{
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -291,6 +374,26 @@
             margin: 5%;
             margin-top: 0;
             width: 100%;
+            @media screen and (max-width: 1360px) {
+                grid-template-columns: repeat(4, 1fr);
+                margin: 0;
+                align-items: center;
+            }
+            @media screen and (max-width: 1250px) {
+                grid-template-columns: repeat(3, 1fr);
+                margin: 0;
+                align-items: center;
+            }
+            @media screen and (max-width: 980px) {
+                grid-template-columns: repeat(2, 1fr);
+                margin: 0;
+                align-items: center;
+            }
+            @media screen and (max-width: 640px) {
+                grid-template-columns: 1fr;
+                margin: 0;
+                align-items: center;
+            }
             &__airport{
                 display: flex;
                 flex-direction: column;
@@ -322,6 +425,7 @@
                         font-size: 20px;
                         margin-bottom: 5px;
                         text-align: center;
+                        @include textwrap;
                     }
                     &__country{
                         display: flex;
@@ -329,6 +433,7 @@
                         padding-left: 5%;
                         font-size: 18px;
                         font-weight: 550;
+                        @include textwrap;
                     }
                     &__timezone{
                         display: flex;
@@ -336,9 +441,12 @@
                         padding-left: 5%;
                         font-size: 18px;
                         font-weight: 550;
+                        @include textwrap;
                     }
                 }
             }
         } 
     }
 }
+
+

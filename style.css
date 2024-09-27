@@ -85,6 +85,7 @@
   right: 0;
   left: 0;
   z-index: 999;
+  width: 100%;
 }
 .header__slogan {
   padding: 2%;
@@ -138,11 +139,51 @@
   display: flex;
   flex-direction: column;
 }
+@media screen and (max-width: 790px) {
+  .filter {
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 2%;
+    margin-left: 0;
+    height: -moz-fit-content;
+    height: fit-content;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 120px;
+    z-index: 999;
+  }
+}
+@media screen and (max-width: 1360px) {
+  .filter--small {
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 2%;
+    margin-left: 0;
+    height: -moz-min-content;
+    height: min-content;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 120px;
+    z-index: 999;
+  }
+}
 .filter__header {
   font-weight: 700;
   font-size: 25px;
   margin-bottom: 20%;
   font-family: "DIN Next", sans-serif;
+}
+@media screen and (max-width: 790px) {
+  .filter__header {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+}
+@media screen and (max-width: 1360px) {
+  .filter__header--small {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
 }
 .filter__titles {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -153,10 +194,37 @@
 .filter__titles:hover {
   cursor: pointer;
 }
+@media screen and (max-width: 790px) {
+  .filter__titles {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+}
+@media screen and (max-width: 1360px) {
+  .filter__titles--small {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+}
 .filter__options-list {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   margin-bottom: 5%;
+}
+@media screen and (max-width: 790px) {
+  .filter__options-list {
+    margin-bottom: 0;
+    top: 50px;
+    position: absolute;
+    width: 200px;
+  }
+}
+@media screen and (max-width: 1360px) {
+  .filter__options-list--small {
+    margin-bottom: 0;
+    position: absolute;
+    width: 200px;
+  }
 }
 .filter__options-list__options {
   margin-left: 5%;
@@ -182,6 +250,13 @@
   display: flex;
   margin-top: 5%;
 }
+@media screen and (max-width: 790px) {
+  .flights__container {
+    flex-direction: column;
+    margin: 2%;
+    align-items: center;
+  }
+}
 .flights__list {
   display: flex;
   flex-direction: column;
@@ -189,6 +264,11 @@
   margin: 5%;
   margin-top: 0;
   width: 100%;
+}
+@media screen and (max-width: 790px) {
+  .flights__list {
+    margin: 0px;
+  }
 }
 .flights__list__flight {
   display: flex;
@@ -240,6 +320,7 @@
 }
 .flights__list__flight__body {
   display: grid;
+  width: 100%;
   grid-template-columns: 20% 1fr 1fr 1fr;
   color: #000536;
   text-align: center;
@@ -266,6 +347,11 @@
 .flights__list__flight__body__departure__timezone {
   font-size: 1.2rem;
 }
+@media screen and (max-width: 585px) {
+  .flights__list__flight__body__arrow {
+    width: 150px;
+  }
+}
 .flights__list__flight__body__arrival {
   display: flex;
   flex-direction: column;
@@ -288,6 +374,13 @@
   display: flex;
   margin-top: 5%;
 }
+@media screen and (max-width: 1360px) {
+  .airports__container {
+    flex-direction: column;
+    margin: 2%;
+    align-items: center;
+  }
+}
 .airports__container__list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -297,6 +390,34 @@
   margin: 5%;
   margin-top: 0;
   width: 100%;
+}
+@media screen and (max-width: 1360px) {
+  .airports__container__list {
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 1250px) {
+  .airports__container__list {
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 980px) {
+  .airports__container__list {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 640px) {
+  .airports__container__list {
+    grid-template-columns: 1fr;
+    margin: 0;
+    align-items: center;
+  }
 }
 .airports__container__list__airport {
   display: flex;
@@ -331,6 +452,9 @@
   font-size: 20px;
   margin-bottom: 5px;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .airports__container__list__airport__body__country {
   display: flex;
@@ -338,6 +462,9 @@
   padding-left: 5%;
   font-size: 18px;
   font-weight: 550;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .airports__container__list__airport__body__timezone {
   display: flex;
@@ -345,4 +472,7 @@
   padding-left: 5%;
   font-size: 18px;
   font-weight: 550;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }/*# sourceMappingURL=style.css.map */

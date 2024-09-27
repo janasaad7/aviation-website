@@ -61,40 +61,21 @@ document.addEventListener("DOMContentLoaded", () => {
             searchInput.addEventListener("input", () => search(airports,searchInput.value))
             filterBy(airports, countriesAfrica, countriesAsia, countriesEurope, countriesAustralia, countriesPacific, countriesAtlantic, countriesAmerica)
         })
-        .catch(error => {console.error('error fetching data:', error)});
+        .catch(error => {console.error('error fetching data:', error)})
 })
 
-const filterAfrica = document.querySelector("#airports__filter__africa")
-const filterAsia = document.querySelector("#airports__filter__asia")
-const filterEurope = document.querySelector("#airports__filter__europe")
-const filterAustralia = document.querySelector("#airports__filter__australia")
-const filterPacific = document.querySelector("#airports__filter__pacific")
-const filterAtlantic = document.querySelector("#airports__filter__atlantic")
-const filterAmerica = document.querySelector("#airports__filter__america")
+const filterTitles = ["#airports__filter__africa", "#airports__filter__asia", "#airports__filter__europe", "#airports__filter__australia", "#airports__filter__pacific", "#airports__filter__atlantic", "#airports__filter__america"]
+const filterElements = filterTitles.map(selector => document.querySelector(selector))
 
-const arrowAfrica = document.querySelector("#dropdown-arrow-africa")
-const arrowAsia = document.querySelector("#dropdown-arrow-asia")
-const arrowEurope = document.querySelector("#dropdown-arrow-europe")
-const arrowAustralia = document.querySelector("#dropdown-arrow-australia")
-const arrowPacific = document.querySelector("#dropdown-arrow-pacific")
-const arrowAtlantic = document.querySelector("#dropdown-arrow-atlantic")
-const arrowAmerica = document.querySelector("#dropdown-arrow-america")
+const filterArrows = ["#dropdown-arrow-africa", "#dropdown-arrow-asia", "#dropdown-arrow-europe", "#dropdown-arrow-australia", "#dropdown-arrow-pacific", "#dropdown-arrow-atlantic", "#dropdown-arrow-america"]
+const arrowElements = filterArrows.map(selector => document.querySelector(selector))
 
-const africaTitle = document.querySelector("#airports__filter__africa")
-const asiaTitle = document.querySelector("#airports__filter__asia")
-const europeTitle = document.querySelector("#airports__filter__europe")
-const australiaTitle = document.querySelector("#airports__filter__australia")
-const pacificTitle = document.querySelector("#airports__filter__pacific")
-const atlanticTitle = document.querySelector("#airports__filter__atlantic")
-const americaTitle = document.querySelector("#airports__filter__america")
+const optionsSelectors = ["#airports__container__filter__africa__options", "#airports__container__filter__asia__options", "#airports__container__filter__europe__options", "#airports__container__filter__australia__options", "#airports__container__filter__pacific__options", "#airports__container__filter__atlantic__options", "#airports__container__filter__america__options"]
+const optionsElements = optionsSelectors.map(selector => document.querySelector(selector))
 
-const africaOptions = document.querySelector("#airports__container__filter__africa__options")
-const asiaOptions = document.querySelector("#airports__container__filter__asia__options")
-const europeOptions = document.querySelector("#airports__container__filter__europe__options")
-const australiaOptions = document.querySelector("#airports__container__filter__australia__options")
-const pacificOptions = document.querySelector("#airports__container__filter__pacific__options")
-const atlanticOptions = document.querySelector("#airports__container__filter__atlantic__options")
-const americaOptions = document.querySelector("#airports__container__filter__america__options")
+const [africaTitle, asiaTitle, europeTitle, australiaTitle, pacificTitle, atlanticTitle, americaTitle] = filterElements
+const [arrowAfrica, arrowAsia, arrowEurope, arrowAustralia, arrowPacific, arrowAtlantic, arrowAmerica] = arrowElements
+const [africaOptions, asiaOptions, europeOptions, australiaOptions, pacificOptions, atlanticOptions, americaOptions] = optionsElements
 
 let selectedFilters = {
     africa: new Set(),
@@ -107,25 +88,25 @@ let selectedFilters = {
 }
 
 function filterBy(airports, countriesAfrica, countriesAsia, countriesEurope, countriesAustralia, countriesPacific, countriesAtlantic, countriesAmerica){
-    filterAfrica.addEventListener("click", () => {
+    africaTitle.addEventListener("click", () => {
         populateAndSelectFilters("africa", countriesAfrica, africaOptions, africaTitle, arrowAfrica, selectedFilters, airports, "airports")
     })
-    filterAsia.addEventListener("click", () => {
+    asiaTitle.addEventListener("click", () => {
         populateAndSelectFilters("asia", countriesAsia, asiaOptions, asiaTitle, arrowAsia, selectedFilters, airports, "airports")
     })
-    filterEurope.addEventListener("click", () => {
+    europeTitle.addEventListener("click", () => {
         populateAndSelectFilters("europe", countriesEurope, europeOptions, europeTitle, arrowEurope, selectedFilters, airports, "airports")
     })  
-    filterAustralia.addEventListener("click", () => {
+    australiaTitle.addEventListener("click", () => {
         populateAndSelectFilters("australia", countriesAustralia, australiaOptions, australiaTitle, arrowAustralia, selectedFilters, airports, "airports");
     })
-    filterPacific.addEventListener("click", () => {
+    pacificTitle.addEventListener("click", () => {
         populateAndSelectFilters("pacific", countriesPacific, pacificOptions, pacificTitle, arrowPacific, selectedFilters, airports, "airports");
     })
-    filterAtlantic.addEventListener("click", () => {
+    atlanticTitle.addEventListener("click", () => {
         populateAndSelectFilters("atlantic", countriesAtlantic, atlanticOptions, atlanticTitle, arrowAtlantic, selectedFilters, airports, "airports");
     })
-    filterAmerica.addEventListener("click", () => {
+    americaTitle.addEventListener("click", () => {
         populateAndSelectFilters("america", countriesAmerica, americaOptions, americaTitle, arrowAmerica, selectedFilters, airports, "airports");
     })
 }
