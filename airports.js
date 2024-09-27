@@ -2,7 +2,7 @@ import { navigationBar, search, populateAndSelectFilters } from './main.js'
 
 document.addEventListener("DOMContentLoaded", () => {
     navigationBar()
-    const accessKey = '67855f922d2032559af9fd6211988932'
+    const accessKey = '8f61b205806b5d90785f7bef9bb96605'
     const url = `https://api.aviationstack.com/v1/airports?access_key=${accessKey}`
 
     const loading = document.querySelector(".loading");

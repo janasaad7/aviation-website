@@ -2,7 +2,7 @@ import { navigationBar  , populateAndSelectFilters } from './main.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     navigationBar()
-    const accessKey = '67855f922d2032559af9fd6211988932s'
+    const accessKey = '8f61b205806b5d90785f7bef9bb96605'
     const url = `https://api.aviationstack.com/v1/flights?access_key=${accessKey}`
 
     const loading = document.querySelector(".loading");
@@ -116,6 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         case("Tibet Airlines"): airlineLogo.src = "images/tibet.png"; break;
                         case("Smartavia"): airlineLogo.src = "images/smartavia.png"; break;
                         case("Jazeera Airways"): airlineLogo.src = "images/jazeera.png"; break;
+                        case("Hebei Airlines"): airlineLogo.src = "images/hebei.png"; break;
+                        case("Ryanair"): airlineLogo.src = "images/ryanair.png"; break;
 
                         default: airlineLogo.src = "images/airplane.png"; break;
                     }
